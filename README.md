@@ -16,12 +16,10 @@ Follow steps detailed in `section 2.` to deploy this application in OpenShift.
 
 Execute `load_data.sh` script to add some examples in the database. 
 
-Execute `clean_data.sh` to remove previous initialized data.
-
 Usefull links:
 
-- OpenApi: 
-- Swagger UI: 
+- OpenApi: `q/openapi`
+- Swagger UI: `q/swagger-ui`
 
 ## 2. Openshift Deployment
 
@@ -106,6 +104,7 @@ EOF
 Deploy UI:
 
 ```sh
+# Deploy applications
 oc apply -k deploy/ui/base -n heimerdinger
 ```
 

@@ -1,0 +1,26 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: heimerdinger
+
+commonLabels:
+  app: heimerdinger-db
+  app.kubernetes.io/component: postgresql-persistent
+  app.openshift.io/runtime: postgresql
+  app.kubernetes.io/part-of: heimerdinger
+
+resources:
+- pvc.yaml
+- deployment.yaml
+- service.yaml
+
+images:
+- name: postgresql-image
+  newName: image-registry.openshift-image-registry.svc:5000/openshift/postgresql
+  newTag: 10-el8
+
+secretGenerator:
+- name: heimerdinger-db-config
+  envs:
+  - properties.env
+  type: Opaque

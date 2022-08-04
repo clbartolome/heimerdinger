@@ -1,0 +1,11 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: heimerdinger-api
+spec:
+  port:
+    targetPort: 8080-tcp
+  to:
+    kind: Service
+    name: heimerdinger-api
+    weight: 100

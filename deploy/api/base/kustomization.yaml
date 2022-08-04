@@ -1,0 +1,25 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: heimerdinger
+
+commonLabels:
+  app: heimerdinger-api
+  app.kubernetes.io/part-of: heimerdinger
+  app.openshift.io/runtime: quarkus
+
+resources:
+- deployment.yaml
+- service.yaml
+- route.yaml
+
+images:
+- name: heimerdinger-api
+  newName: image-registry.openshift-image-registry.svc:5000/heimerdinger/heimerdinger-api
+  newTag: latest
+
+secretGenerator:
+- name: heimerdinger-api-config
+  envs:
+  - properties.env
+  type: Opaque

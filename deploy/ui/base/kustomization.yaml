@@ -1,0 +1,19 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: heimerdinger
+
+commonLabels:
+  app: heimerdinger-ui
+  app.kubernetes.io/part-of: heimerdinger
+  app.openshift.io/runtime: nginx
+
+resources:
+- deployment.yaml
+- service.yaml
+- route.yaml
+
+images:
+- name: heimerdinger-ui
+  newName: image-registry.openshift-image-registry.svc:5000/heimerdinger/heimerdinger-ui
+  newTag: latest

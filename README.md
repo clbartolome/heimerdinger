@@ -16,7 +16,7 @@ Follow steps detailed in `section 2.` to deploy this application in OpenShift.
 
 Execute `load_data.sh` script to add some examples in the database. 
 
-Usefull links:
+Usefull links (On API service, not in the UI!):
 
 - OpenApi: `q/openapi`
 - Swagger UI: `q/swagger-ui`

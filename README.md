@@ -96,7 +96,8 @@ data:
   config.json: |
     {
       "apiUrl": "http://$API_URL",
-      "server": "/servers"
+      "server": "/servers",
+      "login": "/user/auth"
     }
 EOF
 ```
